@@ -1,0 +1,11 @@
+# Users Registration
+# Users Login
+# Subdomain Routing
+
+##
+Add shortpost form to post/questions
+text_widget(aboutus, etc...)
+post and questions should have images
+next and previous questions/ post by the same user or category or tag
+users must verify email befor they can login, implement MustVerifyEmail
+built something with filament php
