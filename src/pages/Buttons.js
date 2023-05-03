@@ -13,7 +13,7 @@ function Buttons() {
     <>
       <PageTitle>Buttons</PageTitle>
 
-      <CTA />
+      {/* <CTA /> */}
 
       <SectionTitle>Primary</SectionTitle>
       <div className="flex flex-col flex-wrap mb-8 space-y-4 md:flex-row md:items-end md:space-x-4">
