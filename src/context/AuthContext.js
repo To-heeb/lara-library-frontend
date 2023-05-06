@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useContext } from 'react'
 
 
 // create a useContext api for data carriage without passing props down manually
@@ -12,7 +12,8 @@ export const AuthContext = createContext({
 
 export const AuthProvider = ({ children }) => {
 
-    const [currentUser, setCurrentUser] = useState({});
+    const [currentUser, setCurrentUser] = useState(null);
+    const [userRole, setUserRole] = useState("admin");
     const [token, _setToken] = useState(localStorage.getItem('BearerToken') || '');
 
     const setToken = (token) => {
@@ -25,16 +26,25 @@ export const AuthProvider = ({ children }) => {
             localStorage.removeItem("BearerToken");
         }
     }
+
+    const value = {
+        currentUser,
+        setCurrentUser,
+        token,
+        setToken,
+        userRole,
+        setUserRole,
+    };
+
     return (
-        <AuthContext.Provider value={{
-            currentUser,
-            setCurrentUser,
-            token,
-            setToken,
-        }}>
+        <AuthContext.Provider value={value}>
             {children}
-        </AuthContext.Provider>
+        </AuthContext.Provider >
     )
 }
 
 export default AuthContext
+
+export const removeToken = () => localStorage.removeItem("BearerToken")
+export const getToken = () => localStorage.getItem("BearerToken")
+export const useAuthContext = () => useContext(AuthContext)

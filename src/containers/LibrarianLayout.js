@@ -7,16 +7,23 @@ import Header from '../components/Header'
 import Main from '../containers/Main'
 import ThemedSuspense from '../components/ThemedSuspense'
 import { SidebarContext } from '../context/SidebarContext'
+import { useAuthContext } from '../context/AuthContext'
 
 const Page404 = lazy(() => import('../pages/404'))
 
 function LibrarianLayout() {
     const { isSidebarOpen, closeSidebar } = useContext(SidebarContext)
+    const { currentUser, userRole, token } = useAuthContext()
     let location = useLocation()
 
     useEffect(() => {
         closeSidebar()
     }, [location])
+
+    if (userRole !== "admin" || token === '' || currentUser == null) {
+        return <Redirect to="/librarian/login" />
+    }
+
 
     return (
         <div

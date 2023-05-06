@@ -24,7 +24,7 @@ const routes = [
     {
         path: '/user/charts',
         icon: 'ChartsIcon',
-        name: 'Charts',
+        name: 'User',
     },
     {
         path: '/user/buttons',

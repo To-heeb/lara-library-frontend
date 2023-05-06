@@ -24,7 +24,7 @@ const routes = [
     {
         path: '/librarian/charts',
         icon: 'ChartsIcon',
-        name: 'Charts',
+        name: 'Librarian',
     },
     {
         path: '/librarian/buttons',
